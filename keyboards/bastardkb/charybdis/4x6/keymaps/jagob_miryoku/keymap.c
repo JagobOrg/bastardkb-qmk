@@ -14,12 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include QMK_KEYBOARD_H
 #include "keymap_danish.h" // quantum/keymap_extras/
-
+#include "features/achordion.h"
 
 enum charybdis_keymap_layers {
-    _COLEMAK_DH = 0,
+    _COLEMAK_DH,
     _QWERTY,
     _NUMBER,
     _NAVIGATION,
@@ -52,9 +53,6 @@ enum charybdis_keymap_layers {
 
 #define ALT_END  LALT_T(KC_END)
 /* #define GUI_0    LGUI_T(KC_0) */
-
-/* #define LOWER MO(NUMBER) */
-/* #define RAISE MO(NAVIGATION) */
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -118,4 +116,63 @@ LGUI_T(KC_ESC), KC_F11,  KC_F12,  DK_GRV,  KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
+
+// combos, manually update combo_count in config.h
+const uint16_t PROGMEM home[] = {KC_N, KC_E, COMBO_END};
+const uint16_t PROGMEM end1[] = {KC_E, KC_I, COMBO_END};
+const uint16_t PROGMEM end2[] = {KC_I, KC_O, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(home, KC_HOME),
+    COMBO(end1, KC_END),
+    COMBO(end2, KC_END),
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_achordion(keycode, record)) { return false; }
+  // Your macros ...
+
+  return true;
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode, keyrecord_t* other_record) {
+  // Exceptionally consider the following chords as holds, even though they
+  // are on the same hand in Dvorak.
+  // switch (tap_hold_keycode) {
+  //   case HOME_S:  // S + H and S + G.
+  //     if (other_keycode == HOME_H || other_keycode == KC_G) {
+  //       return true;
+  //     }
+  //     break;
+  // }
+
+  switch (tap_hold_keycode) {
+      case LT(_NUM, KC_BSPC):
+      case LCTL_T(KC_SPC):
+
+      case LSFT_T(KC_ENT):
+      case LT(_NAV, KC_TAB):
+      case LALT_T(KC_ESC):
+        return true;
+    break;
+  }
+
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  // if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+  //   return true;
+  // }
+
+  if (other_record->event.key.row == 4 || other_record->event.key.row == 9) {
+    return true;
+  }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
 // clang-format on
