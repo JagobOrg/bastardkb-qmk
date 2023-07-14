@@ -64,8 +64,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,   KC_0,    KC_MINS,
 LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,   DK_QUOT, RCTL_T(KC_DEL),
-LGUI_T(KC_ESC),    GUI_A,   ALT_R,   LSFT_S,  LCTL_Ti, KC_G,    KC_M,    LCTL_N,  LSFT_E,  ALT_I,  GUI_O,   LALT_T(DK_QUOT),
-       KC_LSFT, LT(_MUS,KC_Z), KC_X, KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT, LT(_MUS, KC_SLSH), RSFT_T(KC_ENT),
+LALT_T(KC_ESC),    GUI_A,   ALT_R,   LSFT_S,  LCTL_Ti, KC_G,    KC_M,    LCTL_N,  LSFT_E,  ALT_I,  GUI_O,   LGUI_T(DK_QUOT),
+       KC_LSFT, LT(_MUS,KC_Z), KC_X, KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT, LT(_MUS, KC_SLSH), RSFT_T(DRG_TOG),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
                                             KC_BSPC, KC_LGUI,    KC_DEL
@@ -75,8 +75,8 @@ LGUI_T(KC_ESC),    GUI_A,   ALT_R,   LSFT_S,  LCTL_Ti, KC_G,    KC_M,    LCTL_N,
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
 LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, RCTL_T(KC_DEL),
-LGUI_T(KC_ESC),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, LALT_T(DK_QUOT),
-       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, RSFT_T(KC_ENT),
+LALT_T(KC_ESC),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, LGUI_T(DK_QUOT),
+       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, RSFT_T(DRG_TOG),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
                                            KC_BSPC, KC_LGUI,    KC_DEL
@@ -86,7 +86,7 @@ LGUI_T(KC_ESC),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,  
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
 LCTL_T(KC_TAB), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    RCTL_T(KC_DEL),
-LGUI_T(KC_ESC), GUI_0,   ALT_EQL, DK_ASTR, DK_SLSH, DK_AT,      KC_HOME, KC_0,    KC_1,    ALT_END, GUI_0,   LALT_T(DK_QUOT),
+LALT_T(KC_ESC), GUI_0,   ALT_EQL, DK_ASTR, DK_SLSH, DK_AT,      KC_HOME, KC_0,    KC_1,    ALT_END, GUI_0,   LGUI_T(DK_QUOT),
        KC_LSFT, KC_MINS, KC_EQL,  DK_MINS, DK_PLUS, DK_CIRC,    KC_PGDN, KC_PGUP, DK_COMM, DK_DOT,  DK_MINS, RSFT_T(KC_ENT),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                            KC_TRNS, LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_ADJ, KC_TAB),  
@@ -97,7 +97,7 @@ LGUI_T(KC_ESC), GUI_0,   ALT_EQL, DK_ASTR, DK_SLSH, DK_AT,      KC_HOME, KC_0,  
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
 LCTL_T(KC_TAB), DK_EXLM, DK_DQUO, DK_HASH, DK_DLR,  DK_PERC,    DK_AMPR, DK_LPRN, DK_RPRN, DK_LCBR, DK_RCBR, RCTL_T(KC_DEL),
-LGUI_T(KC_ESC), DK_QUES, DK_EQL,  DK_ASTR, DK_SLSH, DK_AT,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, DK_QUOT, LALT_T(DK_QUOT),
+LALT_T(KC_ESC), DK_QUES, DK_EQL,  DK_ASTR, DK_SLSH, DK_AT,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, DK_QUOT, LGUI_T(DK_QUOT),
        KC_LSFT, DK_BSLS, DK_TILD, DK_MINS, DK_PLUS, DK_CIRC,    DK_PIPE, DK_LBRC, DK_RBRC, DK_LABK, DK_RABK, RSFT_T(KC_ENT),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_ADJ, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), KC_TRNS,  
@@ -108,22 +108,23 @@ LGUI_T(KC_ESC), DK_QUES, DK_EQL,  DK_ASTR, DK_SLSH, DK_AT,      KC_LEFT, KC_DOWN
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
      QK_BOOT,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
      QK_REBOOT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  DK_ARNG,
-LGUI_T(KC_ESC), KC_F11,  KC_F12,  DK_GRV,  KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, DK_AE,   DK_OSTR,
+LALT_T(KC_ESC), KC_F11,  KC_F12,  DK_GRV,  KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, DK_AE,   DK_OSTR,
        KC_LSFT, DT_PRNT, DT_DOWN, DT_UP,   KC_COPY, KC_PSTE,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  DF(_CMK), DF(_QWY),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                            KC_TRNS, LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), KC_TRNS,  
                                            KC_BSPC, KC_LGUI,    KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
+
   [_MOUSE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
       _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,    _______, _______, _______, _______, _______, _______,
       _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-      _______, _______, _______, _______, KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
-      _______, KC_TRNS, _______, _______, _______, _______,    DRGSCRL, KC_BTN1, KC_BTN2, DRG_TOG, KC_TRNS, _______,
+      _______, _______, _______, _______, KC_BTN1, KC_BTN2,    _______, KC_BTN1, KC_BTN2, _______, _______, _______,
+      _______, KC_TRNS, _______, _______, KC_WH_D, KC_WH_U,    DRGSCRL, KC_WH_D, KC_WH_U, DRG_TOG, KC_TRNS, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                           KC_TRNS, LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), KC_TRNS,  
-                                           KC_BSPC, KC_LGUI,    KC_DEL
+                  LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
+                                            KC_BSPC, KC_LGUI,    KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
