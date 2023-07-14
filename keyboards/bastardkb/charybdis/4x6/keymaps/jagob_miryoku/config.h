@@ -42,3 +42,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 // #define BILATERAL_COMBINATIONS 1000
+
+// mouse layer auto
+// #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// only required if not setting mouse layer elsewhere
+// #define AUTO_MOUSE_DEFAULT_LAYER 5
+
+// https://github.com/manna-harbour/miryoku_qmk/blob/bdb9fd81e8aa2afb3882f7c0f6ae2d3ba448ac93/users/manna-harbour_miryoku/config.h#L23-L33
+// Mouse key speed and acceleration.
+#undef MOUSEKEY_DELAY
+#define MOUSEKEY_DELAY          0
+#undef MOUSEKEY_INTERVAL
+#define MOUSEKEY_INTERVAL       16
+#undef MOUSEKEY_WHEEL_DELAY
+#define MOUSEKEY_WHEEL_DELAY    0
+#undef MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED      6
+#undef MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX    64

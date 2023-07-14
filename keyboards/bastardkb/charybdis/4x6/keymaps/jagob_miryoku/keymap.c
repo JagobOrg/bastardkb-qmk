@@ -25,7 +25,10 @@ enum charybdis_keymap_layers {
     _NUMBER,
     _NAVIGATION,
     _ADJUST,
+    _MOUSE,
 };
+
+// #define AUTO_MOUSE_DEFAULT_LAYER 5
 
 // Layer names shortcuts
 #define _CMK _COLEMAK_DH
@@ -35,6 +38,7 @@ enum charybdis_keymap_layers {
 #define _NAV _NAVIGATION
 #define _CFG _CONFIG
 #define _ADJ _ADJUST
+#define _MUS _MOUSE
 
 // Miryoku
 #define GUI_A    LGUI_T(KC_A)
@@ -58,58 +62,65 @@ enum charybdis_keymap_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK_DH] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
-LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, DK_QUOT, RCTL_T(KC_DEL),
-LGUI_T(KC_ESC),    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,    KC_E,    KC_I,    KC_O, LALT_T(DK_QUOT),
-       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, RSFT_T(KC_ENT),
+        KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,   KC_0,    KC_MINS,
+LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,   DK_QUOT, RCTL_T(KC_DEL),
+LGUI_T(KC_ESC),    GUI_A,   ALT_R,   LSFT_S,  LCTL_Ti, KC_G,    KC_M,    LCTL_N,  LSFT_E,  ALT_I,  GUI_O,   LALT_T(DK_QUOT),
+       KC_LSFT, LT(_MUS,KC_Z), KC_X, KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT, LT(_MUS, KC_SLSH), RSFT_T(KC_ENT),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
-                                           KC_BSPC, KC_LGUI,    KC_DEL
+                                            KC_BSPC, KC_LGUI,    KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [_QWERTY] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
-LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, RCTL_T(KC_DEL),
-LGUI_T(KC_ESC),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, LALT_T(DK_QUOT),
-       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, RSFT_T(KC_ENT),
+        KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
+LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, RCTL_T(KC_DEL),
+LGUI_T(KC_ESC),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, LALT_T(DK_QUOT),
+       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, RSFT_T(KC_ENT),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
                                            KC_BSPC, KC_LGUI,    KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-
   [_NUMBER] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
 LCTL_T(KC_TAB), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    RCTL_T(KC_DEL),
-LGUI_T(KC_ESC), GUI_0,   ALT_EQL, DK_ASTR, DK_SLSH, DK_AT,      KC_HOME, KC_1,    KC_0,    ALT_END, GUI_0,   LALT_T(DK_QUOT),
+LGUI_T(KC_ESC), GUI_0,   ALT_EQL, DK_ASTR, DK_SLSH, DK_AT,      KC_HOME, KC_0,    KC_1,    ALT_END, GUI_0,   LALT_T(DK_QUOT),
        KC_LSFT, KC_MINS, KC_EQL,  DK_MINS, DK_PLUS, DK_CIRC,    KC_PGDN, KC_PGUP, DK_COMM, DK_DOT,  DK_MINS, RSFT_T(KC_ENT),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                            KC_TRNS, LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_ADJ, KC_TAB),  
                                            KC_BSPC, KC_LGUI,    KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-
   [_NAVIGATION] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
 LCTL_T(KC_TAB), DK_EXLM, DK_DQUO, DK_HASH, DK_DLR,  DK_PERC,    DK_AMPR, DK_LPRN, DK_RPRN, DK_LCBR, DK_RCBR, RCTL_T(KC_DEL),
 LGUI_T(KC_ESC), DK_QUES, DK_EQL,  DK_ASTR, DK_SLSH, DK_AT,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, DK_QUOT, LALT_T(DK_QUOT),
        KC_LSFT, DK_BSLS, DK_TILD, DK_MINS, DK_PLUS, DK_CIRC,    DK_PIPE, DK_LBRC, DK_RBRC, DK_LABK, DK_RABK, RSFT_T(KC_ENT),
-
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_ADJ, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), KC_TRNS,  
                                            KC_BSPC, KC_LGUI,    KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-
   [_ADJUST] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-       QK_BOOT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  DK_ARNG,
+     QK_BOOT,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+     QK_REBOOT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  DK_ARNG,
 LGUI_T(KC_ESC), KC_F11,  KC_F12,  DK_GRV,  KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, DK_AE,   DK_OSTR,
        KC_LSFT, DT_PRNT, DT_DOWN, DT_UP,   KC_COPY, KC_PSTE,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  DF(_CMK), DF(_QWY),
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                           KC_TRNS, LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), KC_TRNS,  
+                                           KC_BSPC, KC_LGUI,    KC_DEL
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [_MOUSE] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+      _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,    _______, _______, _______, _______, _______, _______,
+      _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+      _______, _______, _______, _______, KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
+      _______, KC_TRNS, _______, _______, _______, _______,    DRGSCRL, KC_BTN1, KC_BTN2, DRG_TOG, KC_TRNS, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                            KC_TRNS, LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), KC_TRNS,  
                                            KC_BSPC, KC_LGUI,    KC_DEL
@@ -118,21 +129,17 @@ LGUI_T(KC_ESC), KC_F11,  KC_F12,  DK_GRV,  KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D
 };
 
 // combos, manually update combo_count in config.h
-const uint16_t PROGMEM home[] = {KC_N, KC_E, COMBO_END};
-const uint16_t PROGMEM end1[] = {KC_E, KC_I, COMBO_END};
-const uint16_t PROGMEM end2[] = {KC_I, KC_O, COMBO_END};
+/* const uint16_t PROGMEM home[] = {KC_N, KC_E, COMBO_END}; */
+/* const uint16_t PROGMEM end1[] = {KC_E, KC_I, COMBO_END}; */
+/* const uint16_t PROGMEM end2[] = {KC_I, KC_O, COMBO_END}; */
+const uint16_t PROGMEM home[] = {KC_DOWN, KC_UP,   COMBO_END};
+const uint16_t PROGMEM end1[] = {KC_UP,   KC_RGHT, COMBO_END};
+const uint16_t PROGMEM end2[] = {KC_RGHT, DK_QUOT, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(home, KC_HOME),
     COMBO(end1, KC_END),
     COMBO(end2, KC_END),
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  if (!process_achordion(keycode, record)) { return false; }
-  // Your macros ...
-
-  return true;
-}
 
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                      uint16_t other_keycode, keyrecord_t* other_record) {
@@ -174,5 +181,47 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 void matrix_scan_user(void) {
   achordion_task();
 }
+
+// https://docs.qmk.fm/#/feature_pointing_device?id=drag-scroll-or-mouse-scroll
+enum custom_keycodes {
+    DRAG_SCROLL = SAFE_RANGE,
+};
+
+bool set_scrolling = false;
+
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    if (set_scrolling) {
+        mouse_report.h = mouse_report.x;
+        // mouse_report.v = mouse_report.y;
+        mouse_report.v = -mouse_report.y;  // reverse drag direction. Not working :(
+        mouse_report.x = 0;
+        mouse_report.y = 0;
+    }
+    return mouse_report;
+}
+
+/* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
+/*     if (keycode == DRAG_SCROLL && record->event.pressed) { */
+/*         set_scrolling = !set_scrolling; */
+/*     } */
+/*     return true; */
+/* } */
+/*  */
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    if (!process_achordion(keycode, record)) { return false; }
+    // Your macros ...
+  
+    // drag scroll
+    if (keycode == DRGSCRL && record->event.pressed) {
+        set_scrolling = !set_scrolling;
+    }
+    return true;
+}
+
+/* void pointing_device_init_user(void) { */
+/*     #<{(| set_auto_mouse_layer(<mouse_layer>); // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer> |)}># */
+/*     set_auto_mouse_enable(true);         // always required before the auto mouse feature will work */
+/* } */
 
 // clang-format on
