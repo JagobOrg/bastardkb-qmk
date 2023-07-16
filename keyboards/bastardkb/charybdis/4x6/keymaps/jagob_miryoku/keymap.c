@@ -22,17 +22,19 @@
 enum charybdis_keymap_layers {
     _COLEMAK_DH,
     _QWERTY,
+    _QWERTY_GAMING,
     _NUMBER,
     _NAVIGATION,
     _ADJUST,
     _MOUSE,
 };
 
-// #define AUTO_MOUSE_DEFAULT_LAYER 5
+// #define AUTO_MOUSE_DEFAULT_LAYER 6
 
 // Layer names shortcuts
 #define _CMK _COLEMAK_DH
 #define _QWY _QWERTY
+#define _QGA _QWERTY_GAMING
 #define _NUM _NUMBER
 #define _SYM _SYMBOL
 #define _NAV _NAVIGATION
@@ -57,15 +59,20 @@ enum charybdis_keymap_layers {
 
 #define ALT_END  LALT_T(KC_END)
 /* #define GUI_0    LGUI_T(KC_0) */
+#define ALT_G    LALT_T(KC_G)
+
+#define MUS_Z    LT(_MUS, KC_Z)
+#define MUS_DOT  LT(_MUS, KC_DOT)
+#define MUS_SLSH LT(_MUS, KC_SLSH)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK_DH] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,   KC_0,    KC_MINS,
-LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,   DK_QUOT, RCTL_T(KC_DEL),
+LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,   DK_QUOT, DRG_TOG,
 LALT_T(KC_ESC),    GUI_A,   ALT_R,   LSFT_S,  LCTL_Ti, KC_G,    KC_M,    LCTL_N,  LSFT_E,  ALT_I,  GUI_O,   LGUI_T(DK_QUOT),
-       KC_LSFT, LT(_MUS,KC_Z), KC_X, KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT, LT(_MUS, KC_SLSH), RSFT_T(DRG_TOG),
+       KC_LSFT,    MUS_Z,   KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, MUS_DOT,MUS_SLSH,DRGSCRL,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
                                             KC_BSPC, KC_LGUI,    KC_DEL
@@ -77,6 +84,17 @@ LALT_T(KC_ESC),    GUI_A,   ALT_R,   LSFT_S,  LCTL_Ti, KC_G,    KC_M,    LCTL_N,
 LCTL_T(KC_TAB),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, RCTL_T(KC_DEL),
 LALT_T(KC_ESC),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, LGUI_T(DK_QUOT),
        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, RSFT_T(DRG_TOG),
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                  LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
+                                           KC_BSPC, KC_LGUI,    KC_DEL
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [_QWERTY_GAMING] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+        KC_ESC,    KC_5,    KC_1,    KC_2,    KC_3,    KC_4,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
+LCTL_T(KC_TAB),    KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, RCTL_T(KC_DEL),
+LALT_T(KC_ESC),    ALT_G,   KC_A,    KC_S,    KC_D,    KC_F,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, LGUI_T(DK_QUOT),
+       KC_LSFT,    KC_B,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, RSFT_T(DRG_TOG),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
                                            KC_BSPC, KC_LGUI,    KC_DEL
@@ -106,7 +124,7 @@ LALT_T(KC_ESC), DK_QUES, DK_EQL,  DK_ASTR, DK_SLSH, DK_AT,      KC_LEFT, KC_DOWN
   ),
   [_ADJUST] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-     QK_BOOT,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+     QK_BOOT,   DF(_QGA),KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
      QK_REBOOT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  DK_ARNG,
 LALT_T(KC_ESC), KC_F11,  KC_F12,  DK_GRV,  KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, DK_AE,   DK_OSTR,
        KC_LSFT, DT_PRNT, DT_DOWN, DT_UP,   KC_COPY, KC_PSTE,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  DF(_CMK), DF(_QWY),
@@ -120,8 +138,8 @@ LALT_T(KC_ESC), KC_F11,  KC_F12,  DK_GRV,  KC_BTN1, KC_BTN2,    KC_MS_L, KC_MS_D
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
       _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,    _______, _______, _______, _______, _______, _______,
       _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-      _______, _______, _______, _______, KC_BTN1, KC_BTN2,    _______, KC_BTN1, KC_BTN2, _______, _______, _______,
-      _______, KC_TRNS, _______, _______, KC_WH_D, KC_WH_U,    DRGSCRL, KC_WH_D, KC_WH_U, DRG_TOG, KC_TRNS, _______,
+      _______, _______, _______, _______, KC_BTN1, KC_BTN2,    DRG_TOG, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
+      _______, KC_TRNS, _______, _______, KC_WH_D, KC_WH_U,    DRGSCRL, KC_WH_D, KC_WH_U, KC_TRNS, KC_TRNS, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                   LT(_NUM, KC_BSPC), LCTL_T(KC_SPC), KC_LALT,    LSFT_T(KC_ENT), LT(_NAV, KC_TAB),  
                                             KC_BSPC, KC_LGUI,    KC_DEL
@@ -157,10 +175,16 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
       case LT(_NUM, KC_BSPC):
       case LCTL_T(KC_SPC):
-
       case LSFT_T(KC_ENT):
       case LT(_NAV, KC_TAB):
+
       case LALT_T(KC_ESC):
+
+      case MUS_Z:
+      case MUS_DOT:
+      case MUS_SLSH:
+      
+      case ALT_G:
         return true;
     break;
   }
@@ -214,7 +238,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // Your macros ...
   
     // drag scroll
-    if (keycode == DRGSCRL && record->event.pressed) {
+    if (keycode == DRAG_SCROLL && record->event.pressed) {
         set_scrolling = !set_scrolling;
     }
     return true;
